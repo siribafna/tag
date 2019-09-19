@@ -1,5 +1,8 @@
 package org.improving.tag;
 
+import org.improving.tag.commands.DanceCommand;
+import org.improving.tag.commands.InventoryCommand;
+import org.improving.tag.commands.JumpCommand;
 import org.improving.tag.commands.LookCommand;
 
 import java.util.Date;
@@ -9,13 +12,11 @@ public class Game {
     private Date startTime;
     private Date endTime;
 
-
     public Date getStartTime() { return startTime; }
     private void setStartTime(Date val) { this.startTime = val; }
 
     public Date getEndTime() { return endTime; }
     private void setEndTime(Date endTime) { this.endTime = endTime; }
-
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
@@ -25,17 +26,20 @@ public class Game {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
             LookCommand lCmd = new LookCommand();
+            DanceCommand dCmd = new DanceCommand();
+            JumpCommand jCmd = new JumpCommand();
+            InventoryCommand iCmd = new InventoryCommand();
             if (lCmd.isValid(input)) {
                 lCmd.execute(input);
             }
-            else if (input.equals("inventory")) {
-                System.out.println("You are carrying nothing.");
+            else if (iCmd.isValid(input)) {
+                iCmd.execute(input);
             }
-            else if (input.equals("dance")) {
-                System.out.println("You dance around.");
+            else if (dCmd.isValid(input)) {
+               dCmd.execute(input);
             }
-            else if (input.equals("jump")) {
-                System.out.println("You jump around.");
+            else if (jCmd.isValid(input)) {
+                jCmd.execute(input);
             }
             else if (input.equals("exit")) {
                 System.out.println("Goodbye.");
