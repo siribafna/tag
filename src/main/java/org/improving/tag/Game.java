@@ -10,10 +10,11 @@ public class Game {
     private Date startTime;
     private Date endTime;
 
-    private BaseEmoteCommand[] commands;
+    private Command[] commands;
 
     public Game() {
-        commands = new BaseEmoteCommand[]{
+
+        commands = new Command[]{
                 new LookCommand(),
                 new DanceCommand(),
                 new JumpCommand(),
@@ -37,7 +38,7 @@ public class Game {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
 
-            BaseEmoteCommand validCommand = getValidCommand(input);
+            Command validCommand = getValidCommand(input);
             if (null != validCommand)
                 validCommand.execute(input);
             else if (input.equals("exit")) {
@@ -51,9 +52,9 @@ public class Game {
         this.setEndTime(new Date());
     }
 
-    private BaseEmoteCommand getValidCommand(String input) {
-        BaseEmoteCommand validCommand = null;
-        for(BaseEmoteCommand eachCommand: commands) {
+    private Command getValidCommand(String input) {
+        Command validCommand = null;
+        for(Command eachCommand: commands) {
             if(eachCommand.isValid(input))
                 return eachCommand;
         }
