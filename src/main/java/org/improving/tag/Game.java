@@ -13,9 +13,11 @@ public class Game {
     private Date endTime;
 
     private Command[] commands;
+    private InputOutput io;
 
-    public Game(Command [] commands) {
+    public Game(Command [] commands, InputOutput io) {
         this.commands = commands;
+        this.io = io;
     }
 
     public Date getStartTime() { return startTime; }
@@ -25,23 +27,23 @@ public class Game {
     private void setEndTime(Date endTime) { this.endTime = endTime; }
 
     public void run() {
-        Scanner scanner = new Scanner(System.in);
+
         this.setStartTime(new Date());
         boolean loop = true;
 
         while(loop) {
-            System.out.print("> ");
-            String input = scanner.nextLine().trim();
+            io.displayPrompt("> ");
+            String input = io.receiveInput();
 
             Command validCommand = getValidCommand(input);
             if (null != validCommand)
                 validCommand.execute(input);
-            else if (input.equals("exit")) {
-                System.out.println("Goodbye.");
+            else if (input.equalsIgnoreCase("exit")) {
+                io.displayText("Goodbye.");
                 loop = false; // leave the loop
             }
             else {
-                System.out.println("Huh, I don't understand.");
+                io.displayText("Huh, I don't understand.");
             }
         }
         this.setEndTime(new Date());
