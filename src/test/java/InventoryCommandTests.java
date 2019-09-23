@@ -20,10 +20,10 @@ public class InventoryCommandTests {
     @Test
     public void execute_should_return_phrase() {
         // act
-        target.execute(null);
+        target.execute(null, null);
 
         //
-        assertEquals("You are carrying nothing",  io.lastText);
+        assertEquals("You are carrying nothing.",  io.lastText);
 
     }
 
@@ -31,7 +31,7 @@ public class InventoryCommandTests {
     public void isValid_should_be_true_when_input_is_dance() {
 
         // Act
-        var result = target.isValid("inventory");
+        var result = target.isValid("inventory", null);
         // Assert
         assertTrue(result);
     }
@@ -40,7 +40,7 @@ public class InventoryCommandTests {
     public void isValid_should_be_true_when_input_is_dance_with_spaces() {
 
         // Act
-        var result = target.isValid("  inventory   ");
+        var result = target.isValid("  inventory   ", null);
         // Assert
         assertTrue(result);
     }
@@ -49,7 +49,7 @@ public class InventoryCommandTests {
     public void isValid_should_be_true_when_input_is_dance_with_caps() {
 
         // Act
-        var result = target.isValid("inveNTORY");
+        var result = target.isValid("inveNTORY", null);
         // Assert
         assertTrue(result);
     }
@@ -57,7 +57,7 @@ public class InventoryCommandTests {
     @Test
     public void isValid_should_be_false_when_input_is_foobar() {
 
-        var result = target.isValid("foobar");
+        var result = target.isValid("foobar", null);
         // Assert
         assertFalse(result);
     }
@@ -65,7 +65,7 @@ public class InventoryCommandTests {
     @Test
     public void isValid_should_be_false_when_input_is_null() {
 
-        var result = target.isValid(null);
+        var result = target.isValid(null, null);
         // Assert
         assertFalse(result);
     }

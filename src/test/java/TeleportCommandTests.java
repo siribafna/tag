@@ -1,21 +1,20 @@
-
 import org.improving.tag.InputOutput;
-        import org.improving.tag.commands.JumpCommand;
-        import org.junit.jupiter.api.BeforeEach;
-        import org.junit.jupiter.api.Test;
+import org.improving.tag.commands.TeleportCommand;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-        import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-    public class JumpCommandTests {
+public class TeleportCommandTests {
 
-    JumpCommand target;
+    TeleportCommand target;
     TestInputOutput io;
 
     @BeforeEach
     public void arrange() {
 
         io = new TestInputOutput();
-        target = new JumpCommand(io);
+        target = new TeleportCommand(io);
     }
 
     @Test
@@ -24,7 +23,7 @@ import org.improving.tag.InputOutput;
         target.execute(null, null);
 
         //
-        assertEquals("You jump around.",  io.lastText);
+        assertEquals("You phase out of existence.",  io.lastText);
 
     }
 
@@ -32,7 +31,7 @@ import org.improving.tag.InputOutput;
     public void isValid_should_be_true_when_input_is_dance() {
 
         // Act
-        var result = target.isValid("dance", null);
+        var result = target.isValid("teleport", null);
         // Assert
         assertTrue(result);
     }
@@ -41,7 +40,7 @@ import org.improving.tag.InputOutput;
     public void isValid_should_be_true_when_input_is_dance_with_spaces() {
 
         // Act
-        var result = target.isValid("  dance   ", null);
+        var result = target.isValid("  teleport   ", null);
         // Assert
         assertTrue(result);
     }
@@ -50,7 +49,7 @@ import org.improving.tag.InputOutput;
     public void isValid_should_be_true_when_input_is_dance_with_caps() {
 
         // Act
-        var result = target.isValid("dANCe", null);
+        var result = target.isValid("teLEPORt", null);
         // Assert
         assertTrue(result);
     }
@@ -71,4 +70,5 @@ import org.improving.tag.InputOutput;
         assertFalse(result);
     }
 }
+
 
