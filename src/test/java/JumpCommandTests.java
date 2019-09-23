@@ -1,20 +1,20 @@
 import org.improving.tag.InputOutput;
-import org.improving.tag.commands.DanceCommand;
+import org.improving.tag.commands.JumpCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DanceCommandTests {
+public class JumpCommandTests {
 
-    DanceCommand target;
+    JumpCommand target;
     TestInputOutput io;
 
     @BeforeEach
     public void arrange() {
 
         io = new TestInputOutput();
-        target = new DanceCommand(io);
+        target = new JumpCommand(io);
     }
 
     @Test
@@ -23,7 +23,7 @@ public class DanceCommandTests {
         target.execute(null, null);
 
         //
-        assertEquals("You dance around.",  io.lastText);
+        assertEquals("You jump around.",  io.lastText);
 
     }
 

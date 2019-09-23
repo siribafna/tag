@@ -1,20 +1,20 @@
 import org.improving.tag.InputOutput;
-import org.improving.tag.commands.DanceCommand;
+import org.improving.tag.commands.InventoryCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DanceCommandTests {
+public class InventoryCommandTests {
 
-    DanceCommand target;
+    InventoryCommand target;
     TestInputOutput io;
 
     @BeforeEach
     public void arrange() {
 
         io = new TestInputOutput();
-        target = new DanceCommand(io);
+        target = new InventoryCommand(io);
     }
 
     @Test
@@ -23,7 +23,7 @@ public class DanceCommandTests {
         target.execute(null, null);
 
         //
-        assertEquals("You dance around.",  io.lastText);
+        assertEquals("You are carrying nothing.",  io.lastText);
 
     }
 
@@ -31,7 +31,7 @@ public class DanceCommandTests {
     public void isValid_should_be_true_when_input_is_dance() {
 
         // Act
-        var result = target.isValid("dance", null);
+        var result = target.isValid("inventory", null);
         // Assert
         assertTrue(result);
     }
@@ -40,7 +40,7 @@ public class DanceCommandTests {
     public void isValid_should_be_true_when_input_is_dance_with_spaces() {
 
         // Act
-        var result = target.isValid("  dance   ", null);
+        var result = target.isValid("  inventory   ", null);
         // Assert
         assertTrue(result);
     }
@@ -49,7 +49,7 @@ public class DanceCommandTests {
     public void isValid_should_be_true_when_input_is_dance_with_caps() {
 
         // Act
-        var result = target.isValid("dANCe", null);
+        var result = target.isValid("inveNTORY", null);
         // Assert
         assertTrue(result);
     }
