@@ -19,19 +19,26 @@ public class SetNameTests {
         target = new SetCommand(io);
         game = mock(Game.class); // giving mock all the properties of class, making a mock version of it to test in, kind of
         //like a fake mock to use for the test
+        /*
         Player player = new Player();
         player.setName("hi");
         player.setHitPoints(50);
+
         when(game.getPlayer()).thenReturn(player); // verifying that when game.getPlayer is called, it is returning the statement
+    */
     }
 
     @Test
     public void execute_should_display_all_words_but_atSetNameEquals() {
-        // act
+        Player player = new Player(null); // passing in null because tests are only testing the name set, not paramenters
+        player.setName("hi");
+        player.setHitPoints(50);
+        player = spy(player); // spying on the player
+        when(game.getPlayer()).thenReturn(player);
+        //act
         target.execute("@set name=Fluefedor",game);
         // assert
-        assertEquals("Your name is now Fluefedor.", io.lastText);
-        verify(game, times(1)).getPlayer(); // verify that setname was called once and ONLY ONCE"1"
+        verify(player).setName("Fluefedor");
     }
 
     @Test
