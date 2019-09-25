@@ -4,7 +4,6 @@ import org.improving.tag.commands.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
-import java.util.Scanner;
 
 @Component
 public class Game {
@@ -105,7 +104,7 @@ public class Game {
         tvod.setName("The Volcano of Death");
 
         tdh.getExits().add(new Exit("Heaven Ave", tmcs, "h", "heaven", "ave"));
-        tdh.getExits().add(new Exit("The Deathly Brownie", td, "tbd", "deathly", "brownie"));
+        tdh.getExits().add(new Exit("The Deathly Brownie", td, "tdb", "deathly", "brownie"));
 
         td.getExits().add(new Exit("Camel Path", ta, "cp", "camel", "path"));
         td.getExits().add(new Exit("The Dock", air, "dock", "tdock"));
@@ -118,12 +117,12 @@ public class Game {
         tict.getExits().add(new Exit("Magic Portal", md, "magic", "portal", "mp"));
 
         air.getExits().add(new Exit("Flight to the Mall", tma, "flight", "flight2mall", "f2m"));
-        air.getExits().add(new Exit("Flight 121", tmo, "flight121", "f121"));
+        air.getExits().add(new Exit("Flight 121", tmo, "flight", "f121"));
 
         tmo.getExits().add(new Exit("The Lava Flow", tvod, "lava", "flow", "lf"));
         tmo.getExits().add(new Exit("The Narrow Trail", md, "narrow", "trail", "nt"));
         tmo.getExits().add(new Exit("The Plane", ta, "plane", "theplane", "tp"));
-        tmo.getExits().add(new Exit("Bike Trail", tr, "bike", "biketrail", "bt"));
+        tmo.getExits().add(new Exit("Bike Trail", tr, "bike", "trail", "bt"));
 
         ta.getExits().add(new Exit("Amaz-ing Moose", tvm, "am", "amazing", "moose", "am"));
 
