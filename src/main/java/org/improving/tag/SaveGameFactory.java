@@ -26,10 +26,30 @@ public class SaveGameFactory {
         try {
             path = fsa.saveToFile(saveContents);
             io.displayText("Saved : " + path);
+
         } catch (IOException ex) {
             io.displayText(ex.toString());
         }
         return path;
+    }
+
+    public void load(String path, Game game) {
+
+        Map<String, String> saveContents;
+
+        try {
+
+            saveContents = fsa.loadFile(path); // define outside the scope
+
+        } catch (IOException e) {
+            io.displayText(e.toString());
+            io.displayText("Failed to load File");
+            return; // immediate end
+        }
+
+        Location lastKnownLocation = game.getLocationOf(saveContents.get("location")); // used to search location
+        game.getPlayer().setLocation(lastKnownLocation);
 
     }
+
 }

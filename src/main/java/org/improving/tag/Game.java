@@ -3,7 +3,9 @@ package org.improving.tag;
 import org.improving.tag.commands.*;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class Game {
@@ -14,6 +16,7 @@ public class Game {
     private InputOutput io;
     private Player p;
     private Location startingLocation;
+    private List<Location> locationList = new ArrayList<>();
     private final SaveGameFactory saveFactory;
     public Game(Command [] commands, InputOutput io, SaveGameFactory saveFactory) {
         startingLocation = buildWorld();
@@ -71,39 +74,51 @@ public class Game {
 
         var tdh = new Location();
         tdh.setName("The Deathly Hallows");
+        this.locationList.add(tdh);
 
         var td = new Location();
         td.setName("The Desert");
+        this.locationList.add(td);
 
         var ta = new Location();
         ta.setName("The Amazon");
+        this.locationList.add(ta);
 
         var tmcs = new Location();
         tmcs.setName("The Mac & Cheese Shop");
+        this.locationList.add(tmcs);
 
         var tict = new Location();
         tict.setName("The Ice Cream Truck");
+        this.locationList.add(tict);
 
         var air = new Location();
         air.setName("The Airport");
+        this.locationList.add(air);
 
         var tmo = new Location();
         tmo.setName("The Mountains");
+        this.locationList.add(tmo);
 
         var tr = new Location();
         tr.setName("The Reef");
+        this.locationList.add(tr);
 
         var tma = new Location();
         tma.setName("The Mall");
+        this.locationList.add(tma);
 
         var md = new Location();
         md.setName("Mountain Doom");
+        this.locationList.add(md);
 
         var tvm = new Location();
         tvm.setName("THe Velvet Moose");
+        this.locationList.add(tvm);
 
         var tvod = new Location();
         tvod.setName("The Volcano of Death");
+        this.locationList.add(tvod);
 
         tdh.getExits().add(new Exit("Heaven Ave", tmcs, "h", "heaven", "ave"));
         tdh.getExits().add(new Exit("The Deathly Brownie", td, "tdb", "deathly", "brownie"));
@@ -141,6 +156,15 @@ public class Game {
         tvm.getExits().add(new Exit("The Front Door", ta, "front", "door", "fd", "tfd"));
 
         return tdh;
+    }
+
+    public Location getLocationOf(final String intendedLocationName) {
+        for(Location location: locationList) {
+            if(intendedLocationName.equalsIgnoreCase(location.getName())) {
+                return location;
+            }
+        }
+        return null;
     }
 }
 
