@@ -25,6 +25,7 @@ public class Game {
         this.p = new Player(startingLocation);
         this.saveFactory = saveFactory;
     }
+
     public Location getStartingLocation() { return startingLocation; }
 
     public Player getPlayer() {
@@ -75,6 +76,10 @@ public class Game {
         var tdh = new Location();
         tdh.setName("The Deathly Hallows");
         this.locationList.add(tdh);
+
+        Adversary villain = new Adversary();
+        villain.setName("Souron");
+        tdh.setAdversary(villain);
 
         var td = new Location();
         td.setName("The Desert");
