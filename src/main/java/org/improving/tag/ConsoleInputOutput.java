@@ -6,10 +6,16 @@ import java.util.Scanner;
 @Component
 public class ConsoleInputOutput implements InputOutput {
 
-    private Scanner scanner = new Scanner(System.in);
+   // private Scanner scanner = new Scanner(System.in);
+    private Scanner input;
+
+    public ConsoleInputOutput(Scanner input) {
+        this.input = input;
+    }
+
     @Override
     public String receiveInput() {
-        return scanner.nextLine();
+        return input.nextLine();
     }
 
     @Override

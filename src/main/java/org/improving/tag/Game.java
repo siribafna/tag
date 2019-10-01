@@ -42,18 +42,17 @@ public class Game {
 
         this.setStartTime(new Date());
         boolean loop = true;
-
         while(loop) {
             io.displayPrompt("> ");
             String input = io.receiveInput();
 
             Command validCommand = getValidCommand(input);
-            if (null != validCommand)
-                validCommand.execute(input, this);
-            else if (input.equalsIgnoreCase("exit")) {
-                saveFactory.save(this); // saving the path now onto the class
-                io.displayText("Goodbye.");
-                loop = false; // leave the loop
+            if (null != validCommand) {
+                try {
+                    validCommand.execute(input, this);
+                } catch (GameExitException ex) {
+                    loop = false;
+                }
             }
             else {
                 io.displayText("Huh, I don't understand.");
@@ -79,7 +78,7 @@ public class Game {
 
         Adversary villain = new Adversary();
         villain.setName("Souron");
-        tdh.setAdversary(villain);
+
 
         var td = new Location();
         td.setName("The Desert");
@@ -116,6 +115,7 @@ public class Game {
         var md = new Location();
         md.setName("Mountain Doom");
         this.locationList.add(md);
+        md.setAdversary(villain);
 
         var tvm = new Location();
         tvm.setName("THe Velvet Moose");

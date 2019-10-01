@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class JumpCommand extends BaseEmoteCommand{
     public JumpCommand(InputOutput io) {
-        super("jump", "You jump around.", io);
+        super("You jump around.", io,"jump", "j");
     }
 }
