@@ -11,7 +11,6 @@ public class LookCommand extends BaseAliasedCommand {
     public LookCommand(InputOutput io) {
         super(io,"look", "where am i?", "whereami", "l");
         this.io = io;
-        //super("look", "You look around.", io);
     }
 
     @Override
@@ -19,7 +18,8 @@ public class LookCommand extends BaseAliasedCommand {
         var location = game.getPlayer().getLocation();
         io.displayText(location.getName());
         io.displayText(location.getDescription());
-        io.displayText("");
+        io.displayText(location.getTreasureChest());
+        io.displayNewLine();
         io.displayText("Exits: ");
 
         for(var exit : location.getExits()) {

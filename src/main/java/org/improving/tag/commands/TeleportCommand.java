@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 public class TeleportCommand extends BaseEmoteCommand {
     public TeleportCommand(InputOutput io) {
-        super("You phase out of existance.", io, "teleport", "t");
+        super("You phase out of existance.", io, "teleport", "t", "tele", "traverse");
     }
 
 }

@@ -11,7 +11,7 @@ public class ExitCommand extends BaseAliasedCommand {
    private SaveGameFactory saveGameFactory; // final, should do when trying to get a dependency
 
    public ExitCommand (SaveGameFactory saveGameFactory, InputOutput io) {
-       super(io, "exit");
+       super(io, "exit", "leave", "bye", "peace");
        this.saveGameFactory = saveGameFactory;
    }
 
