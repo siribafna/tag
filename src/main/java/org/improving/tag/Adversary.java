@@ -1,5 +1,11 @@
 package org.improving.tag;
 
+import org.improving.tag.items.Item;
+import org.springframework.stereotype.Component;
+
+import static org.improving.tag.items.UniqueItems.THE_ONE_RING;
+
+@Component
 public class Adversary {
 
     private String name;
@@ -7,6 +13,8 @@ public class Adversary {
     private int damageTaken = 0;
     private int attackDamage;
     private Location location;
+    private Inventory inventory = new Inventory();
+    private TreasureChest treasureChest = new TreasureChest(THE_ONE_RING, "A golden ring");
 
     public String getName() { return name; }
 
@@ -23,4 +31,7 @@ public class Adversary {
     public int getAttackDamage() { return attackDamage; }
 
     public void setAttackDamage(int attackDamage) { this.attackDamage = attackDamage; }
+    public Item getAdversaryTreasure() {
+        return treasureChest.getItem();
+    }
 }

@@ -15,6 +15,9 @@ public class InventoryCommand extends BaseAliasedCommand{
        if (game.getPlayer().getInventory().isEmpty()) {
             io.displayText("You're carrying nothing");
         }
+       else {
+           io.displayText(game.getPlayer().getInventory().getInventoryDisplay());
+       }
 
     }
 

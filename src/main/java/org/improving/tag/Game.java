@@ -93,6 +93,7 @@ public class Game {
         tmcs.setName("The Mac & Cheese Shop");
         tmcs.setTreasureChest(new TreasureChest(UniqueItems.BLUE_SHELL, "A Kraft Box"));
         this.locationList.add(tmcs);
+        tmcs.setAdversary(villain);
 
         var tict = new Location();
         tict.setName("The Ice Cream Truck");
@@ -117,7 +118,7 @@ public class Game {
         var md = new Location();
         md.setName("Mountain Doom");
         this.locationList.add(md);
-        md.setAdversary(villain);
+
 
         var tvm = new Location();
         tvm.setName("THe Velvet Moose");

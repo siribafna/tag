@@ -18,7 +18,7 @@ public class AttackCommand implements Command{
     public boolean isValid(String input, Game game) {
         if (input == null) return false;
         input = input.trim();
-        return input.equalsIgnoreCase("attack");
+        return input.equalsIgnoreCase("a");
     }
 
     @Override
@@ -30,7 +30,16 @@ public class AttackCommand implements Command{
             if (i <= 20 && i > 0) {
                 game.getPlayer().getLocation().getAdversary().setDamageTaken(10);
                 io.displayText(("You hit " + game.getPlayer().getLocation().getAdversary().getName()) + "!");
-                io.displayText("HitPoints: " + (game.getPlayer().getLocation().getAdversary().getHitPoints() - game.getPlayer().getLocation().getAdversary().getDamageTaken()));
+                int hitpoints = (game.getPlayer().getLocation().getAdversary().getHitPoints() - game.getPlayer().getLocation().getAdversary().getDamageTaken());
+                if (hitpoints > 0) {
+                    io.displayText("HitPoints: " + hitpoints);
+                }
+                if(hitpoints <= 0) {
+                    io.displayText(("You KILLED " + game.getPlayer().getLocation().getAdversary().getName()) + "!");
+                    game.getPlayer().getInventory().addItem(game.getPlayer().getLocation().getAdversary().getAdversaryTreasure());
+                    game.getPlayer().getLocation().setAdversary(null);
+                    //game.getPlayer().getLocation().getAdversary().getAdversaryTreasure();
+                }
             }
         }
         else  {

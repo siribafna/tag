@@ -11,4 +11,17 @@ public class Inventory {
     public boolean isEmpty() {
         return items.isEmpty();
     }
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public String getInventoryDisplay() {
+        String displayString = "You have these items: ";
+        for(Item item: items) {
+            displayString += "\n" + item;
+        }
+        return displayString;
+
+    }
 }
