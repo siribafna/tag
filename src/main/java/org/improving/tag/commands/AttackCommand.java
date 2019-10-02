@@ -29,16 +29,18 @@ public class AttackCommand implements Command{
             int i = r.nextInt(100) + 1;
             if (i <= 20 && i > 0) {
                 game.getPlayer().getLocation().getAdversary().setDamageTaken(10);
-                io.displayText(("You hit " + game.getPlayer().getLocation().getAdversary().getName()) + "!");
+              //  io.displayText(("You hit " + game.getPlayer().getLocation().getAdversary().getName()) + "!");
                 int hitpoints = (game.getPlayer().getLocation().getAdversary().getHitPoints() - game.getPlayer().getLocation().getAdversary().getDamageTaken());
-                if (hitpoints > 0) {
+                if (hitpoints >= 10) {
+                    io.displayText(("You hit " + game.getPlayer().getLocation().getAdversary().getName()) + "!");
                     io.displayText("HitPoints: " + hitpoints);
                 }
                 if(hitpoints <= 0) {
                     io.displayText(("You KILLED " + game.getPlayer().getLocation().getAdversary().getName()) + "!");
+                    io.displayText("You earned " + game.getPlayer().getLocation().getAdversary().getAdversaryTreasure());
                     game.getPlayer().getInventory().addItem(game.getPlayer().getLocation().getAdversary().getAdversaryTreasure());
                     game.getPlayer().getLocation().setAdversary(null);
-                    //game.getPlayer().getLocation().getAdversary().getAdversaryTreasure();
+
                 }
             }
         }

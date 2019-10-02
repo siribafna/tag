@@ -63,5 +63,19 @@ public class Location {
         treasureChest = TreasureChest.NO_TREASURE;
         return treasure;
     }
+
+    @Override
+    public String toString() {
+        return this.getName(); //.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Location) {
+            Location location = (Location) obj;
+            return this.getName().equals(location.getName());
+        }
+        return super.equals(obj);
+    }
 }
 
